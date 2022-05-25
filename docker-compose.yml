@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  pokemon-service:
+    image: pokemon-service
+    container_name: pokemon-service
+    build:
+      context: .
+    ports:
+      - '8080:8080'
+    networks:
+      - pokemon-network
+networks:
+  pokemon-network:
+    driver: bridge
+
+
