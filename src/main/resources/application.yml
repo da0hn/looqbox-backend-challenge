@@ -1,0 +1,12 @@
+application:
+  pokeapi:
+    url: https://pokeapi.co/api/v2
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1/pokemon-service
+spring:
+  application:
+    name: pokemon-queries-service
+
+
