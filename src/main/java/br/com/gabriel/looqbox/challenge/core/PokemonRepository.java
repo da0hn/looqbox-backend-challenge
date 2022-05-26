@@ -1,11 +1,9 @@
 package br.com.gabriel.looqbox.challenge.core;
 
-import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
-
-import java.util.Collection;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonContainer;
 
 public interface PokemonRepository {
 
-  Collection<Pokemon> fetchAllPokemons();
+  PokemonContainer fetchAllPokemons();
 
 }

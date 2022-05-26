@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Pokemons implements PokemonContainer {
 
@@ -49,6 +51,12 @@ public class Pokemons implements PokemonContainer {
   @Override public PokemonContainer slice(final int initialPosition, final int endPosition) {
     if(this.pokemons.size() == 1) throw new IllegalStateException("It was not possible slice the container content");
     return Pokemons.of(this.pokemons.subList(initialPosition, endPosition));
+  }
+
+  @Override public PokemonContainer filter(final Predicate<? super Pokemon> predicate) {
+    return this.pokemons.stream()
+      .filter(predicate)
+      .collect(Collectors.collectingAndThen(Collectors.toList(), Pokemons::of));
   }
 
   private static Pokemons of(final List<Pokemon> pokemons) {

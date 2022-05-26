@@ -1,6 +1,7 @@
 package br.com.gabriel.looqbox.challenge.core.domain;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface PokemonContainer {
   int halfSize();
@@ -10,4 +11,5 @@ public interface PokemonContainer {
   boolean hasPokemons();
   List<Pokemon> asList();
   PokemonContainer slice(int initialPosition, int endPosition);
+  PokemonContainer filter(Predicate<? super Pokemon> filter);
 }

@@ -1,4 +1,4 @@
-package br.com.gabriel.looqbox.challenge.core;
+package br.com.gabriel.looqbox.challenge.core.usecase;
 
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 
