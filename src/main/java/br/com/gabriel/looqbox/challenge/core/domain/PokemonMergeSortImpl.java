@@ -1,4 +1,4 @@
-package br.com.gabriel.looqbox.challenge.core;
+package br.com.gabriel.looqbox.challenge.core.domain;
 
 import java.util.function.Supplier;
 
