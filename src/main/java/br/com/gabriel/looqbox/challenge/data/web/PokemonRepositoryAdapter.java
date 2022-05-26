@@ -5,6 +5,7 @@ import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonContainer;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.stream.Collectors;
@@ -21,7 +22,9 @@ public class PokemonRepositoryAdapter implements PokemonRepository {
     this.pokeApiFeignClient = pokeApiFeignClient;
   }
 
-  @Override public PokemonContainer fetchAllPokemons() {
+  @Override
+  @Cacheable("pokemons")
+  public PokemonContainer fetchAllPokemons() {
     return this.pokeApiFeignClient.getAllPokemons(OFF_SET, LIMIT).results().stream()
       .map(pokemon -> new Pokemon(pokemon.name()))
       .collect(Collectors.collectingAndThen(Collectors.toList(), Pokemons::new));
