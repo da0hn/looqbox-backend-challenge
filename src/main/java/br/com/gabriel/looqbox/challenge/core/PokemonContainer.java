@@ -7,7 +7,7 @@ public interface PokemonContainer {
   int size();
   Pokemon at(Integer position);
   void add(Pokemon pokemon);
-  void remove(Pokemon pokemon);
   boolean hasPokemons();
   List<Pokemon> asList();
+  PokemonContainer slice(int initialPosition, int endPosition);
 }
