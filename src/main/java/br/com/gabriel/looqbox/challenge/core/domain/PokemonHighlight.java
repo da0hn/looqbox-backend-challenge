@@ -1,6 +1,6 @@
 package br.com.gabriel.looqbox.challenge.core.domain;
 
-public record PokemonHighlighted(
+public record PokemonHighlight(
   String name,
   String highlight
 ) {
