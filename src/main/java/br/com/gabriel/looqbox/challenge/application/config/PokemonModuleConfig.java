@@ -1,6 +1,8 @@
 package br.com.gabriel.looqbox.challenge.application.config;
 
 import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighterImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonMergeSortImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsByName;
@@ -20,5 +22,10 @@ public class PokemonModuleConfig {
   @Bean
   public PokemonSorter pokemonSorter() {
     return new PokemonMergeSortImpl();
+  }
+
+  @Bean
+  public PokemonHighlighter pokemonHighlighter() {
+    return new PokemonHighlighterImpl();
   }
 }
