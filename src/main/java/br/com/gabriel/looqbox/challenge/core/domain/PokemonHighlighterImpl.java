@@ -10,15 +10,19 @@ public class PokemonHighlighterImpl implements PokemonHighlighter {
 
   @Override public PokemonHighlight highlight(final String text, final String name) {
 
-    if(text == null || text.isEmpty()) throw new IllegalArgumentException("The highlighted text must be informed");
-    if(name == null) throw new IllegalArgumentException("The pokemon name must be informed");
+    ifTextIsInvalidThrowException(text);
+    ifNameIsNullThrowException(name);
 
-    if(!name.contains(text.toLowerCase(Locale.ROOT))) return new PokemonHighlight(name, null);
+    if(pokemonNameIsNotContainedInText(text, name)) return new PokemonHighlight(name, null);
 
-    final var index = name.indexOf(text);
+    final StringBuilder highlightBuilder = buildPokemonHighlight(text, name);
 
+    return new PokemonHighlight(name, highlightBuilder.toString());
+  }
+
+  private static StringBuilder buildPokemonHighlight(final String text, final String name) {
     final var highlightBuilder = new StringBuilder();
-
+    final var index = name.indexOf(text);
     int counter = 0;
     while(counter < name.length()) {
       if(isInitialOfHighlight(index, counter)) {
@@ -29,8 +33,7 @@ public class PokemonHighlighterImpl implements PokemonHighlighter {
       highlightBuilder.append(name.charAt(counter));
       counter++;
     }
-
-    return new PokemonHighlight(name, highlightBuilder.toString());
+    return highlightBuilder;
   }
 
   private static void applyHighlight(final String text, final StringBuilder highlightBuilder) {
@@ -41,6 +44,18 @@ public class PokemonHighlighterImpl implements PokemonHighlighter {
 
   private static boolean isInitialOfHighlight(final int index, final int counter) {
     return index == counter;
+  }
+
+  private static boolean pokemonNameIsNotContainedInText(final String text, final String name) {
+    return !name.contains(text.toLowerCase(Locale.ROOT));
+  }
+
+  private static void ifNameIsNullThrowException(final String name) {
+    if(name == null) throw new IllegalArgumentException("The pokemon name must be informed");
+  }
+
+  private static void ifTextIsInvalidThrowException(final CharSequence text) {
+    if(text == null || text.isEmpty()) throw new IllegalArgumentException("The highlighted text must be informed");
   }
 
 }
