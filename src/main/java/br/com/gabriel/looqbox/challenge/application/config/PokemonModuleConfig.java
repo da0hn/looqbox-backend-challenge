@@ -6,7 +6,9 @@ import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighterImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonMergeSortImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsByName;
+import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsHighlightedByName;
 import br.com.gabriel.looqbox.challenge.core.usecase.impl.GetPokemonsByNameImpl;
+import br.com.gabriel.looqbox.challenge.core.usecase.impl.GetPokemonsHighlightedByNameImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,5 +29,14 @@ public class PokemonModuleConfig {
   @Bean
   public PokemonHighlighter pokemonHighlighter() {
     return new PokemonHighlighterImpl();
+  }
+
+  @Bean
+  public GetPokemonsHighlightedByName getPokemonsHighlightedByName(
+    final PokemonRepository pokemonRepository,
+    final PokemonSorter pokemonSorter,
+    final PokemonHighlighter pokemonHighlighter
+  ) {
+    return new GetPokemonsHighlightedByNameImpl(pokemonRepository, pokemonHighlighter, pokemonSorter);
   }
 }
