@@ -13,5 +13,5 @@
 
 ## Diagram
 
-![diagrama](./backend-challenge-diagrama.png)
+![diagrama](./backend-challenge-diagram.jpg)
 
