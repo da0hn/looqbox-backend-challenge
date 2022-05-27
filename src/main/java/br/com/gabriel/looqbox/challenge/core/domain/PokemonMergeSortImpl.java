@@ -50,7 +50,7 @@ public class PokemonMergeSortImpl implements PokemonSorter {
 
   @Override public PokemonContainer sort(final PokemonContainer pokemons) {
     if(pokemons.size() < 2) return pokemons;
-    final int halfSize = Math.floorDiv(pokemons.size(), 2);
+    final int halfSize = pokemons.halfSize();
     final var pokemonsAtLeft = this.sort(pokemons.slice(0, halfSize));
     final var pokemonsAtRight = this.sort(pokemons.slice(halfSize, pokemons.size()));
     return merge(pokemonsAtLeft, pokemonsAtRight);
