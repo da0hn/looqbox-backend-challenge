@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static java.util.Arrays.asList;
 
 @Tag("unit")
-@DisplayName("Pokemons container implementation test")
+@DisplayName("Test pokemons container implementation")
 class PokemonsTest {
 
   private static final Pokemon PIKACHU = new Pokemon("pikachu");

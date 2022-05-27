@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Tag("integration")
-@DisplayName("/health endpoint tests")
+@DisplayName("Test /health endpoint")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class HealthControllerTest {
 

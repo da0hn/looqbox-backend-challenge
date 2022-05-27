@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("unit")
-@DisplayName("Pokemon sorter test")
+@DisplayName("Test Pokemon sorter")
 class PokemonSorterTest {
 
   private static final Pokemon PIKACHU = new Pokemon("pikachu");
