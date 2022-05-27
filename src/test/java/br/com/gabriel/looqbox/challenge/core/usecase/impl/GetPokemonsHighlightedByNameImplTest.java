@@ -2,6 +2,7 @@ package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
 import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlight;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
@@ -59,7 +60,7 @@ class GetPokemonsHighlightedByNameImplTest {
 
     doReturn(unsortedPokemons).when(this.pokemonRepository).fetchAllPokemons();
     doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
-    doReturn("").when(this.pokemonHighlighter).highlight(any(), any());
+    doReturn(new PokemonHighlight("", "")).when(this.pokemonHighlighter).highlight(any(), any());
 
     this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid", "pid"));
 

@@ -2,7 +2,6 @@ package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
 import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
-import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlight;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsHighlightedByName;
@@ -37,10 +36,7 @@ public class GetPokemonsHighlightedByNameImpl implements GetPokemonsHighlightedB
 
     return sortedPokemons.asList()
       .stream()
-      .map(pokemon -> {
-        final var highlight = this.pokemonHighlighter.highlight(request.highlightText(), pokemon.name());
-        return new PokemonHighlight(pokemon.name(), highlight);
-      })
+      .map(pokemon -> this.pokemonHighlighter.highlight(request.highlightText(), pokemon.name()))
       .filter(pokemon -> pokemon.highlight() != null)
       .collect(Collectors.collectingAndThen(Collectors.toList(), Response::new));
   }

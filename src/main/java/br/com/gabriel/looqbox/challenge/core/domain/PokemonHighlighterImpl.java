@@ -8,12 +8,12 @@ public class PokemonHighlighterImpl implements PokemonHighlighter {
   private static final String CLOSE_PRE_TAG = "</pre>";
 
 
-  @Override public String highlight(final String text, final String name) {
+  @Override public PokemonHighlight highlight(final String text, final String name) {
 
     if(text == null || text.isEmpty()) throw new IllegalArgumentException("The highlighted text must be informed");
     if(name == null) throw new IllegalArgumentException("The pokemon name must be informed");
 
-    if(!name.contains(text.toLowerCase(Locale.ROOT))) return null;
+    if(!name.contains(text.toLowerCase(Locale.ROOT))) return new PokemonHighlight(name, null);
 
     final var index = name.indexOf(text);
 
@@ -30,7 +30,7 @@ public class PokemonHighlighterImpl implements PokemonHighlighter {
       counter++;
     }
 
-    return highlightBuilder.toString();
+    return new PokemonHighlight(name, highlightBuilder.toString());
   }
 
   private static void applyHighlight(final String text, final StringBuilder highlightBuilder) {

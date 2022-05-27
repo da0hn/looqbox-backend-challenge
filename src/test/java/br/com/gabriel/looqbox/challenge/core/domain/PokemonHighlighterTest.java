@@ -27,7 +27,7 @@ class PokemonHighlighterTest {
     final var text = "pi";
     final String HIGHLIGHT = "<pre>pi</pre>kachu";
     final var pokemonHighlighted = this.pokemonHighlighter.highlight(text, PIKACHU);
-    assertEquals(HIGHLIGHT, pokemonHighlighted);
+    assertEquals(HIGHLIGHT, pokemonHighlighted.highlight());
   }
 
   @Test
@@ -35,7 +35,7 @@ class PokemonHighlighterTest {
   void test2() {
     final var text = "char";
     final var pokemonHighlighted = this.pokemonHighlighter.highlight(text, PIKACHU);
-    assertNull(pokemonHighlighted);
+    assertNull(pokemonHighlighted.highlight());
   }
 
   @Test
@@ -44,7 +44,7 @@ class PokemonHighlighterTest {
     final var text = "ka";
     final var HIGHLIGHT = "pi<pre>ka</pre>chu";
     final var pokemonHighlighted = this.pokemonHighlighter.highlight(text, PIKACHU);
-    assertEquals(HIGHLIGHT, pokemonHighlighted);
+    assertEquals(HIGHLIGHT, pokemonHighlighted.highlight());
   }
 
   @Test
@@ -53,7 +53,7 @@ class PokemonHighlighterTest {
     final var text = "hu";
     final var HIGHLIGHT = "pikac<pre>hu</pre>";
     final var pokemonHighlighted = this.pokemonHighlighter.highlight(text, PIKACHU);
-    assertEquals(HIGHLIGHT, pokemonHighlighted);
+    assertEquals(HIGHLIGHT, pokemonHighlighted.highlight());
   }
 
   @Test
@@ -62,7 +62,7 @@ class PokemonHighlighterTest {
     final var text = "pikachu";
     final var HIGHLIGHT = "<pre>pikachu</pre>";
     final var pokemonHighlighted = this.pokemonHighlighter.highlight(text, PIKACHU);
-    assertEquals(HIGHLIGHT, pokemonHighlighted);
+    assertEquals(HIGHLIGHT, pokemonHighlighted.highlight());
   }
 
   @Test
