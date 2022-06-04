@@ -40,4 +40,11 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+jacocoTestReport {
+    reports {
+        csv.enabled true
+    }
+}
+
+
 test.finalizedBy jacocoTestReport
