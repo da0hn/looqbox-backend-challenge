@@ -2,7 +2,10 @@ plugins {
     id 'org.springframework.boot' version '2.6.5-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    // https://reflectoring.io/jacoco/
+    id 'jacoco'
 }
+
 
 group = 'br.com.gabriel.looqbox'
 version = '0.0.1-SNAPSHOT'
@@ -36,3 +39,5 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+test.finalizedBy jacocoTestReport
