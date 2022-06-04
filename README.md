@@ -1,3 +1,5 @@
+[![CI](https://github.com/da0hn/looqbox-backend-challenge/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/da0hn/looqbox-backend-challenge/actions/workflows/gradle.yml)
+
 # Backend Looqbox Challenge
 
 [Looqbox Challenge Doc](./code-challenge.md#guidelines)
