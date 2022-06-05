@@ -35,7 +35,7 @@ class PokemonSorterTest {
       SANDSLASH
     );
     final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
-    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
+    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SQUIRTLE, SANDSLASH);
   }
 
   @Test
@@ -49,7 +49,7 @@ class PokemonSorterTest {
       IVYSAUR
     );
     final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
-    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
+    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SQUIRTLE, SANDSLASH);
   }
 
 
@@ -64,7 +64,7 @@ class PokemonSorterTest {
       IVYSAUR
     );
     final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
-    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
+    assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SQUIRTLE, SANDSLASH);
   }
 
 
