@@ -2,6 +2,7 @@ package br.com.gabriel.looqbox.challenge.application.config;
 
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighterImpl;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonMergeSortImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsHighlightedByName;
@@ -16,8 +17,8 @@ public class PokemonModuleConfig {
 
 
   @Bean
-  public GetPokemonsByName getPokemonsByName(final PokemonRepository pokemonRepository) {
-    return new GetPokemonsByNameImpl(pokemonRepository);
+  public GetPokemonsByName getPokemonsByName(final PokemonRepository pokemonRepository, final PokemonSorter pokemonSorter) {
+    return new GetPokemonsByNameImpl(pokemonRepository, pokemonSorter);
   }
 
   @Bean
@@ -26,10 +27,16 @@ public class PokemonModuleConfig {
   }
 
   @Bean
+  public PokemonSorter pokemonSorter() {
+    return new PokemonMergeSortImpl();
+  }
+
+  @Bean
   public GetPokemonsHighlightedByName getPokemonsHighlightedByName(
     final PokemonRepository pokemonRepository,
-    final PokemonHighlighter pokemonHighlighter
+    final PokemonHighlighter pokemonHighlighter,
+    final PokemonSorter pokemonSorter
   ) {
-    return new GetPokemonsHighlightedByNameImpl(pokemonRepository, pokemonHighlighter);
+    return new GetPokemonsHighlightedByNameImpl(pokemonRepository, pokemonHighlighter, pokemonSorter);
   }
 }

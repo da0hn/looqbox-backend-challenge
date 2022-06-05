@@ -1,6 +1,7 @@
 package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
+import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName;
 import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName.Request;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -22,14 +24,15 @@ import static org.mockito.Mockito.verify;
 @DisplayName("Test of query pokemon by name")
 class GetPokemonsByNameImplTest {
 
-
   private GetPokemonsByName getPokemonsByName;
   @Mock
   private PokemonRepository repository;
+  @Mock
+  private PokemonSorter pokemonSorter;
 
   @BeforeEach
   void setUp() {
-    this.getPokemonsByName = new GetPokemonsByNameImpl(this.repository);
+    this.getPokemonsByName = new GetPokemonsByNameImpl(this.repository, this.pokemonSorter);
   }
 
   @Test
@@ -48,11 +51,12 @@ class GetPokemonsByNameImplTest {
     );
 
     doReturn(unsortedPokemons).when(this.repository).fetchAllPokemons();
+    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
 
     this.getPokemonsByName.execute(new Request("pi"));
 
     verify(this.repository, times(1)).fetchAllPokemons();
-
+    verify(this.pokemonSorter, times(1)).sort(any());
   }
 
 }

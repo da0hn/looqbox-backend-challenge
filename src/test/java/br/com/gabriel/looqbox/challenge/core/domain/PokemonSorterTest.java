@@ -17,11 +17,11 @@ class PokemonSorterTest {
   private static final Pokemon RATICATE = new Pokemon("raticate");
   private static final Pokemon SANDSLASH = new Pokemon("sandslash");
   private Pokemons unsortedPokemons;
-//  private PokemonMergeSortImpl pokemonSorter;
+  private PokemonMergeSortImpl pokemonSorter;
 
   @BeforeEach
   void setUp() {
-//    this.pokemonSorter = new PokemonMergeSortImpl();
+    this.pokemonSorter = new PokemonMergeSortImpl();
   }
 
   @Test
@@ -34,7 +34,7 @@ class PokemonSorterTest {
       RATICATE,
       SANDSLASH
     );
-    final var sortedPokemons = this.unsortedPokemons.sort();
+    final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
     assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
   }
 
@@ -48,7 +48,7 @@ class PokemonSorterTest {
       SQUIRTLE,
       IVYSAUR
     );
-    final var sortedPokemons = this.unsortedPokemons.sort();
+    final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
     assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
   }
 
@@ -63,7 +63,7 @@ class PokemonSorterTest {
       PIKACHU,
       IVYSAUR
     );
-    final var sortedPokemons = this.unsortedPokemons.sort();
+    final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
     assertThat(sortedPokemons.asList()).containsSequence(IVYSAUR, PIKACHU, RATICATE, SANDSLASH, SQUIRTLE);
   }
 
@@ -74,7 +74,7 @@ class PokemonSorterTest {
     this.unsortedPokemons = Pokemons.of(
       SQUIRTLE
     );
-    final var sortedPokemons = this.unsortedPokemons.sort();
+    final var sortedPokemons = this.unsortedPokemons.sort(this.pokemonSorter);
     assertThat(sortedPokemons.asList()).containsSequence(SQUIRTLE);
   }
 }

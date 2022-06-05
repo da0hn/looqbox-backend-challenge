@@ -11,4 +11,5 @@ public interface PokemonContainer {
   List<Pokemon> asList();
   PokemonContainer slice(int initialPosition, int endPosition);
   PokemonContainer filter(Predicate<? super Pokemon> filter);
+  PokemonContainer sort(PokemonSorter sorter);
 }

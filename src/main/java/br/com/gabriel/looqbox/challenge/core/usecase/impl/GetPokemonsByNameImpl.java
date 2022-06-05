@@ -9,9 +9,11 @@ import java.util.Locale;
 public class GetPokemonsByNameImpl implements GetPokemonsByName {
 
   private final PokemonRepository repository;
+  private final PokemonSorter sorter;
 
-  public GetPokemonsByNameImpl(final PokemonRepository repository) {
+  public GetPokemonsByNameImpl(final PokemonRepository repository, final PokemonSorter sorter) {
     this.repository = repository;
+    this.sorter = sorter;
   }
 
   @Override public Response execute(final Request request) {
@@ -20,6 +22,6 @@ public class GetPokemonsByNameImpl implements GetPokemonsByName {
 
     final var filteredPokemons = pokemons.filter(pokemon -> pokemon.name().contains(request.partialName().toLowerCase(Locale.ROOT)));
 
-    return new Response(((PokemonSorter) filteredPokemons).sort().asList());
+    return new Response(filteredPokemons.sort(this.sorter).asList());
   }
 }
