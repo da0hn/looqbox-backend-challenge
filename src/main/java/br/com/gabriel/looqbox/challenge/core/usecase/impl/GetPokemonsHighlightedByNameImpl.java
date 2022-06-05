@@ -27,13 +27,10 @@ public class GetPokemonsHighlightedByNameImpl implements GetPokemonsHighlightedB
   }
 
   @Override public Response execute(final Request request) {
-
-    final var pokemons = this.repository.fetchAllPokemons();
-
     final Predicate<Pokemon> findPokemonByPartialName = pokemon -> pokemon.name().contains(request.highlightText().toLowerCase(Locale.ROOT));
-    final var filteredPokemons = pokemons.filter(findPokemonByPartialName);
 
-    return filteredPokemons.filter(findPokemonByPartialName)
+    return this.repository.fetchAllPokemons()
+      .filter(findPokemonByPartialName)
       .sort(this.sorter)
       .asList()
       .stream()
