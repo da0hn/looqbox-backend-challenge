@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class Pokemons implements PokemonContainer {
+public class Pokemons implements PokemonContainer, PokemonSorter {
 
   private final List<Pokemon> pokemons;
 
@@ -53,6 +54,62 @@ public class Pokemons implements PokemonContainer {
     return this.pokemons.stream()
       .filter(predicate)
       .collect(Collectors.collectingAndThen(Collectors.toList(), Pokemons::of));
+  }
+
+  private static PokemonContainer merge(final PokemonContainer pokemonsAtLeft, final PokemonContainer pokemonsAtRight) {
+    final var sortedPokemons = Pokemons.of();
+
+    final var counter = new Counter();
+
+    addInAscendingOrder(pokemonsAtLeft, pokemonsAtRight, sortedPokemons, counter);
+    addRemainPokemons(pokemonsAtLeft, sortedPokemons, counter::left);
+    addRemainPokemons(pokemonsAtRight, sortedPokemons, counter::right);
+
+    return sortedPokemons;
+  }
+
+  private static void addInAscendingOrder(
+    final PokemonContainer pokemonsAtLeft,
+    final PokemonContainer pokemonsAtRight,
+    final PokemonContainer sortedPokemons,
+    final Counter counter
+  ) {
+    while(counter.left() < pokemonsAtLeft.size() && counter.right() < pokemonsAtRight.size()) {
+      final var pokemonAtLeft = pokemonsAtLeft.at(counter.left());
+      final var pokemonAtRight = pokemonsAtRight.at(counter.right());
+
+      if(pokemonAtLeft.compareTo(pokemonAtRight) < 0) {
+        sortedPokemons.add(pokemonAtLeft);
+        counter.incrementLeft();
+      }
+      else {
+        sortedPokemons.add(pokemonAtRight);
+        counter.incrementRight();
+      }
+    }
+  }
+
+  private static void addRemainPokemons(
+    final PokemonContainer pokemons,
+    final PokemonContainer sortedPokemons,
+    final Supplier<Integer> counterSupplier
+  ) {
+    int counter = counterSupplier.get();
+    while(counter < pokemons.size()) {
+      sortedPokemons.add(pokemons.at(counter++));
+    }
+  }
+
+  @Override public PokemonContainer sort() {
+    return this.sort(this);
+  }
+
+  private PokemonContainer sort(final PokemonContainer pokemons) {
+    if(pokemons.size() < 2) return pokemons;
+    final int halfSize = pokemons.halfSize();
+    final var pokemonsAtLeft = this.sort(pokemons.slice(0, halfSize));
+    final var pokemonsAtRight = this.sort(pokemons.slice(halfSize, pokemons.size()));
+    return merge(pokemonsAtLeft, pokemonsAtRight);
   }
 
   private static Pokemons of(final List<Pokemon> pokemons) {

@@ -30,16 +30,13 @@ class GetPokemonsHighlightedByNameImplTest {
   @Mock
   private PokemonRepository pokemonRepository;
   @Mock
-  private PokemonSorter pokemonSorter;
-  @Mock
   private PokemonHighlighter pokemonHighlighter;
 
   @BeforeEach
   void setUp() {
     this.getPokemonsHighlightedByName = new GetPokemonsHighlightedByNameImpl(
       this.pokemonRepository,
-      this.pokemonHighlighter,
-      this.pokemonSorter
+      this.pokemonHighlighter
     );
   }
 
@@ -59,12 +56,12 @@ class GetPokemonsHighlightedByNameImplTest {
 
 
     doReturn(unsortedPokemons).when(this.pokemonRepository).fetchAllPokemons();
-    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
+    //    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
     doReturn(new PokemonHighlight("", "")).when(this.pokemonHighlighter).highlight(any(), any());
 
     this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid"));
 
-    verify(this.pokemonSorter, times(1)).sort(any());
+    //    verify(this.pokemonSorter, times(1)).sort(any());
     verify(this.pokemonHighlighter, times(3)).highlight(any(), any());
     verify(this.pokemonRepository, times(1)).fetchAllPokemons();
   }
@@ -85,12 +82,12 @@ class GetPokemonsHighlightedByNameImplTest {
 
 
     doReturn(unsortedPokemons).when(this.pokemonRepository).fetchAllPokemons();
-    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
+    //    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
     doReturn(new PokemonHighlight("", null)).when(this.pokemonHighlighter).highlight(any(), any());
 
     this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid"));
 
-    verify(this.pokemonSorter, times(1)).sort(any());
+    //    verify(this.pokemonSorter, times(1)).sort(any());
     verify(this.pokemonHighlighter, times(3)).highlight(any(), any());
     verify(this.pokemonRepository, times(1)).fetchAllPokemons();
   }
