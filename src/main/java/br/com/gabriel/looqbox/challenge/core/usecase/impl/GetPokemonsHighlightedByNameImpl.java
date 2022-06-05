@@ -1,10 +1,10 @@
 package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
-import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
+import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
-import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsHighlightedByName;
+import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsHighlightedByName;
 
 import java.util.Locale;
 import java.util.function.Predicate;

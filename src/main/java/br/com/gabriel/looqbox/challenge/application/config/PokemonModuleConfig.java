@@ -1,12 +1,12 @@
 package br.com.gabriel.looqbox.challenge.application.config;
 
-import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
+import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighterImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonMergeSortImpl;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
-import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsByName;
-import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsHighlightedByName;
+import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName;
+import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsHighlightedByName;
 import br.com.gabriel.looqbox.challenge.core.usecase.impl.GetPokemonsByNameImpl;
 import br.com.gabriel.looqbox.challenge.core.usecase.impl.GetPokemonsHighlightedByNameImpl;
 import org.springframework.context.annotation.Bean;

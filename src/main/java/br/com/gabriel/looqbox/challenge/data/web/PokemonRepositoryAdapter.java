@@ -1,6 +1,6 @@
 package br.com.gabriel.looqbox.challenge.data.web;
 
-import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
+import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonContainer;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;

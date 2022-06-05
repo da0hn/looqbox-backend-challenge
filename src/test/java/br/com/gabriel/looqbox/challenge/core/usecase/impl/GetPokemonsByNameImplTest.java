@@ -1,10 +1,10 @@
 package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
-import br.com.gabriel.looqbox.challenge.core.PokemonRepository;
+import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
-import br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsByName;
+import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static br.com.gabriel.looqbox.challenge.core.usecase.GetPokemonsByName.Request;
+import static br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName.Request;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
