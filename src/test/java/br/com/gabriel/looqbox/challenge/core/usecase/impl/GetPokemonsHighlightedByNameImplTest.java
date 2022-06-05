@@ -1,12 +1,12 @@
 package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
-import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlight;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsHighlightedByName;
+import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -69,5 +69,29 @@ class GetPokemonsHighlightedByNameImplTest {
     verify(this.pokemonRepository, times(1)).fetchAllPokemons();
   }
 
+  @Test
+  @DisplayName("Should only highlight non null pokemons")
+  void test2() {
+    final var unsortedPokemons = Pokemons.of(
+      new Pokemon("pidgeotto"),
+      new Pokemon("pidgey"),
+      new Pokemon("pidgeot")
+    );
+    final var sortedPokemons = Pokemons.of(
+      new Pokemon("pidgeot"),
+      new Pokemon("pidgeotto"),
+      new Pokemon("pidgey")
+    );
 
+
+    doReturn(unsortedPokemons).when(this.pokemonRepository).fetchAllPokemons();
+    doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
+    doReturn(new PokemonHighlight("", null)).when(this.pokemonHighlighter).highlight(any(), any());
+
+    this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid"));
+
+    verify(this.pokemonSorter, times(1)).sort(any());
+    verify(this.pokemonHighlighter, times(3)).highlight(any(), any());
+    verify(this.pokemonRepository, times(1)).fetchAllPokemons();
+  }
 }
