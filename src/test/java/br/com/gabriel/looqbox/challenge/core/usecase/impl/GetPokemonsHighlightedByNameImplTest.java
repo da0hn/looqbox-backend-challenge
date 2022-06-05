@@ -62,7 +62,7 @@ class GetPokemonsHighlightedByNameImplTest {
     doReturn(sortedPokemons).when(this.pokemonSorter).sort(any());
     doReturn(new PokemonHighlight("", "")).when(this.pokemonHighlighter).highlight(any(), any());
 
-    this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid", "pid"));
+    this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request("pid"));
 
     verify(this.pokemonSorter, times(1)).sort(any());
     verify(this.pokemonHighlighter, times(3)).highlight(any(), any());

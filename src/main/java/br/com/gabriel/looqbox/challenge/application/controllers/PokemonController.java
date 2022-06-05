@@ -44,12 +44,10 @@ public class PokemonController {
 
   @GetMapping("/highlight")
   public ResponseEntity<PokemonHighlightResponse> getPokemonsHighlightedByName(
-    @RequestParam("name") final String partialName,
-    @RequestParam("highlight") final String highlight
+    @RequestParam("partialText") final String partialText
   ) {
     final var response = this.getPokemonsHighlightedByName.execute(new GetPokemonsHighlightedByName.Request(
-      highlight,
-      partialName
+      partialText
     ));
     return ResponseEntity.ok(new PokemonHighlightResponse(response.pokemons()));
   }

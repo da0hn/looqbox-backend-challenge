@@ -10,5 +10,5 @@ public interface GetPokemonsHighlightedByName {
 
   record Response(List<PokemonHighlight> pokemons) {}
 
-  record Request(String highlightText, String pokemonName) {}
+  record Request(String highlightText) {}
 }
