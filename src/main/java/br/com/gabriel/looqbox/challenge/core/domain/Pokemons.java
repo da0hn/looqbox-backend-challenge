@@ -40,10 +40,6 @@ public class Pokemons implements PokemonContainer {
     this.pokemons.add(pokemon);
   }
 
-  @Override public boolean hasPokemons() {
-    return this.pokemons.size() > 0;
-  }
-
   @Override public List<Pokemon> asList() {
     return Collections.unmodifiableList(this.pokemons);
   }

@@ -8,7 +8,6 @@ public interface PokemonContainer {
   int size();
   Pokemon at(Integer position);
   void add(Pokemon pokemon);
-  boolean hasPokemons();
   List<Pokemon> asList();
   PokemonContainer slice(int initialPosition, int endPosition);
   PokemonContainer filter(Predicate<? super Pokemon> filter);
