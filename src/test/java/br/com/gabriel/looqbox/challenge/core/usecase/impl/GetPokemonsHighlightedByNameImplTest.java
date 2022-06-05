@@ -2,8 +2,8 @@ package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
 import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlight;
-import br.com.gabriel.looqbox.challenge.core.domain.PokemonHighlighter;
-import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonHighlighter;
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsHighlightedByName;
 import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;

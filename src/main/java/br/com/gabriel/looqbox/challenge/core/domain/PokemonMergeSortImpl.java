@@ -1,5 +1,8 @@
 package br.com.gabriel.looqbox.challenge.core.domain;
 
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonContainer;
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonSorter;
+
 import java.util.function.Supplier;
 
 public class PokemonMergeSortImpl implements PokemonSorter {

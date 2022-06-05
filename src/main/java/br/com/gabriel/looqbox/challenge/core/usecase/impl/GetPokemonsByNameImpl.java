@@ -1,6 +1,6 @@
 package br.com.gabriel.looqbox.challenge.core.usecase.impl;
 
-import br.com.gabriel.looqbox.challenge.core.domain.PokemonSorter;
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonSorter;
 import br.com.gabriel.looqbox.challenge.core.ports.api.GetPokemonsByName;
 import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 

@@ -1,5 +1,6 @@
 package br.com.gabriel.looqbox.challenge.core.domain;
 
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonHighlighter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

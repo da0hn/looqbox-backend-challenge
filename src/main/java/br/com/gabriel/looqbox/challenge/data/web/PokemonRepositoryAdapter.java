@@ -2,7 +2,7 @@ package br.com.gabriel.looqbox.challenge.data.web;
 
 import br.com.gabriel.looqbox.challenge.core.ports.spi.PokemonRepository;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemon;
-import br.com.gabriel.looqbox.challenge.core.domain.PokemonContainer;
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonContainer;
 import br.com.gabriel.looqbox.challenge.core.domain.Pokemons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;

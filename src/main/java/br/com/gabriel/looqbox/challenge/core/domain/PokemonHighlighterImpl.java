@@ -1,5 +1,7 @@
 package br.com.gabriel.looqbox.challenge.core.domain;
 
+import br.com.gabriel.looqbox.challenge.core.ports.api.PokemonHighlighter;
+
 import java.util.Locale;
 
 public class PokemonHighlighterImpl implements PokemonHighlighter {

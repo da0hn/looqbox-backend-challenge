@@ -1,4 +1,4 @@
-package br.com.gabriel.looqbox.challenge.core.domain;
+package br.com.gabriel.looqbox.challenge.core.ports.api;
 
 public interface PokemonSorter {
 
